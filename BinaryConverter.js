@@ -24,22 +24,35 @@ if (format.test(num)) {
 
 }
 
-let binary = '10001'
+let binary = '10110101'
 let decimalRes = 0
 
 // look up: how to concat regex
 var format2 = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~ß23456789abcdeêfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]/;
 
 if (format2.test(binary)) {
-  
-   console.log('please chose a number containing only 0 and/or 1!')
-   
+
+   console.log('please choose a number containing only 0 and/or 1!')
+
 } else {
-  
+
   console.log('your binary number: ' + binary)
-  
+
   let reverse = ''
 
   for (let i = binary.length - 1; i >= 0; i--) {
     reverse += binary[i]
   }
+
+  for (let i = 0; i <= reverse.length - 1; i++) {
+      let int = parseInt(reverse[i])
+      let result = 2**i * int
+      if (result === 0) {
+          continue
+      } else {
+          decimalRes += result
+      }
+  }
+
+  console.log("your binary number in decimal: " + decimalRes)
+}
